@@ -79,15 +79,15 @@
 
 
 
+<meta name="description" content="一、背景DARTS方法是神经网络结构搜索中的一种可微分搜索方法，他把架构搜索中的离散问题转化为连续问题，利用梯度优化的方法极大的加快了搜索效率。本文主要介绍DARTS方法以及两种改进的DARTS方法。 搜索空间darts如何对一个cell进行搜索的呢，我们通过下图figure 1了解darts的基本思想：(a) 这些灰色的小方块都是一个cell内的nodes，我们需要通过一些操作（如池化、卷积）把">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DARTS方法与代码">
+<meta property="og:title" content="Nas方法：DARTS、PDARTS 和 PC-darts">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;05&#x2F;DARTS%E6%96%B9%E6%B3%95%E4%B8%8E%E4%BB%A3%E7%A0%81&#x2F;index.html">
 <meta property="og:site_name" content="AndrewSun的小屋">
+<meta property="og:description" content="一、背景DARTS方法是神经网络结构搜索中的一种可微分搜索方法，他把架构搜索中的离散问题转化为连续问题，利用梯度优化的方法极大的加快了搜索效率。本文主要介绍DARTS方法以及两种改进的DARTS方法。 搜索空间darts如何对一个cell进行搜索的呢，我们通过下图figure 1了解darts的基本思想：(a) 这些灰色的小方块都是一个cell内的nodes，我们需要通过一些操作（如池化、卷积）把">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;05&#x2F;DARTS%E6%96%B9%E6%B3%95%E4%B8%8E%E4%BB%A3%E7%A0%81&#x2F;sunsunjialiang&#x2F;Documents&#x2F;blog&#x2F;MyselfBlog&#x2F;source&#x2F;_posts&#x2F;DARTS%E6%96%B9%E6%B3%95%E4%B8%8E%E4%BB%A3%E7%A0%81&#x2F;Snip20191205_1.png">
-<meta property="og:updated_time" content="2019-12-05T00:13:04.683Z">
+<meta property="og:updated_time" content="2019-12-09T13:07:05.199Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;05&#x2F;DARTS%E6%96%B9%E6%B3%95%E4%B8%8E%E4%BB%A3%E7%A0%81&#x2F;sunsunjialiang&#x2F;Documents&#x2F;blog&#x2F;MyselfBlog&#x2F;source&#x2F;_posts&#x2F;DARTS%E6%96%B9%E6%B3%95%E4%B8%8E%E4%BB%A3%E7%A0%81&#x2F;Snip20191205_1.png">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <title>DARTS方法与代码 | AndrewSun的小屋</title>
+  <title>Nas方法：DARTS、PDARTS 和 PC-darts | AndrewSun的小屋</title>
   
 
 
@@ -277,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">DARTS方法与代码</h1>
+          <h1 class="post-title" itemprop="name headline">Nas方法：DARTS、PDARTS 和 PC-darts</h1>
         
 
         <div class="post-meta">
@@ -299,6 +299,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NAS/" itemprop="url" rel="index">
+                    <span itemprop="name">NAS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -327,7 +349,8 @@
       
 
       
-        <p><img src="/2019/12/05/DARTS%E6%96%B9%E6%B3%95%E4%B8%8E%E4%BB%A3%E7%A0%81/sunsunjialiang/Documents/blog/MyselfBlog/source/_posts/DARTS%E6%96%B9%E6%B3%95%E4%B8%8E%E4%BB%A3%E7%A0%81/Snip20191205_1.png" alt="Snip20191205_1"></p>
+        <h1 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h1><p>DARTS方法是神经网络结构搜索中的一种可微分搜索方法，他把架构搜索中的离散问题转化为连续问题，利用梯度优化的方法极大的加快了搜索效率。本文主要介绍DARTS方法以及两种改进的DARTS方法。</p>
+<h2 id="搜索空间"><a href="#搜索空间" class="headerlink" title="搜索空间"></a>搜索空间</h2><p>darts如何对一个cell进行搜索的呢，我们通过下图figure 1了解darts的基本思想：<br>(a) 这些灰色的小方块都是一个cell内的nodes，我们需要通过一些操作（如池化、卷积）把这些nodes连起来<br>(b) 原本一个个操作都是离散的，我们为了实现可微分的搜索，也就是为了使搜索空间连续，我们将特定操作的确定的选择放宽到所有可能操作上的softmax，也就是我们给两个block之间的全部操作都赋予权重。假设我们有三个操作，我们把每个节点都通过上述方法和它所有的前驱节点相连，就得到了下图(b)<br>(c) 然后我们就通过梯度下降对权重进行优化，最后对每个节点取argmax也就是哪个操作的α值最大，就选这个操作。<br>(d)选了最大的α后的操作后，我们就得到了(d)的路径</p>
 
       
     </div>
@@ -412,8 +435,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -477,6 +509,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、背景"><span class="nav-number">1.</span> <span class="nav-text">一、背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索空间"><span class="nav-number">1.1.</span> <span class="nav-text">搜索空间</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
