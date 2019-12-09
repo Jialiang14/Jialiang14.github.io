@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="code," />
 
 
 
@@ -79,14 +79,15 @@
 
 
 
-<meta name="description" content="一、背景DARTS方法是神经网络结构搜索中的一种可微分搜索方法，他把架构搜索中的离散问题转化为连续问题，利用梯度优化的方法极大的加快了搜索效率。本文主要介绍DARTS方法以及两种改进的DARTS方法。 二、DARTS搜索空间darts如何对一个cell进行搜索的呢，我们通过下图figure 1了解darts的基本思想：(a)  这些灰色的小方块都是一个cell内的nodes，我们需要通过一些操作（">
+<meta name="description" content="PyTorch学习率调整策略通过torch.optim.lr_scheduler接口实现。 PyTorch提供的学习率调整策略分为三大类，分别是  有序调整：等间隔调整(Step)，按需调整学习率(MultiStep)，指数衰减调整(Exponential)和 余弦退火CosineAnnealing。 自适应调整：自适应调整学习率 ReduceLROnPlateau。 自定义调整：自定义调整学习率">
+<meta name="keywords" content="code">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nas方法：DARTS、PDARTS 和 PC-darts">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;05&#x2F;DARTS%E6%96%B9%E6%B3%95%E4%B8%8E%E4%BB%A3%E7%A0%81&#x2F;index.html">
+<meta property="og:title" content="pytorch保存和加载模型">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;04&#x2F;Pytorch%E5%85%AD%E5%A4%A7%E5%AD%A6%E4%B9%A0%E7%8E%87%E8%B0%83%E6%95%B4%E7%AD%96%E7%95%A5&#x2F;index.html">
 <meta property="og:site_name" content="AndrewSun的小屋">
-<meta property="og:description" content="一、背景DARTS方法是神经网络结构搜索中的一种可微分搜索方法，他把架构搜索中的离散问题转化为连续问题，利用梯度优化的方法极大的加快了搜索效率。本文主要介绍DARTS方法以及两种改进的DARTS方法。 二、DARTS搜索空间darts如何对一个cell进行搜索的呢，我们通过下图figure 1了解darts的基本思想：(a)  这些灰色的小方块都是一个cell内的nodes，我们需要通过一些操作（">
+<meta property="og:description" content="PyTorch学习率调整策略通过torch.optim.lr_scheduler接口实现。 PyTorch提供的学习率调整策略分为三大类，分别是  有序调整：等间隔调整(Step)，按需调整学习率(MultiStep)，指数衰减调整(Exponential)和 余弦退火CosineAnnealing。 自适应调整：自适应调整学习率 ReduceLROnPlateau。 自定义调整：自定义调整学习率">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-09T14:30:30.312Z">
+<meta property="og:updated_time" content="2019-12-09T15:56:34.153Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -117,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/12/05/DARTS方法与代码/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/12/04/Pytorch六大学习率调整策略/"/>
 
 
 
 
 
-  <title>Nas方法：DARTS、PDARTS 和 PC-darts | AndrewSun的小屋</title>
+  <title>pytorch保存和加载模型 | AndrewSun的小屋</title>
   
 
 
@@ -260,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/DARTS%E6%96%B9%E6%B3%95%E4%B8%8E%E4%BB%A3%E7%A0%81/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/04/Pytorch%E5%85%AD%E5%A4%A7%E5%AD%A6%E4%B9%A0%E7%8E%87%E8%B0%83%E6%95%B4%E7%AD%96%E7%95%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AndrewSun">
@@ -277,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Nas方法：DARTS、PDARTS 和 PC-darts</h1>
+          <h1 class="post-title" itemprop="name headline">pytorch保存和加载模型</h1>
         
 
         <div class="post-meta">
@@ -289,8 +290,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-05T08:12:08+08:00">
-                2019-12-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-04T21:04:45+08:00">
+                2019-12-04
               </time>
             
 
@@ -312,8 +313,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NAS/" itemprop="url" rel="index">
-                    <span itemprop="name">NAS</span>
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E8%A7%A3%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">代码解读</span>
                   </a>
                 </span>
 
@@ -349,9 +350,48 @@
       
 
       
-        <h1 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h1><p>DARTS方法是神经网络结构搜索中的一种可微分搜索方法，他把架构搜索中的离散问题转化为连续问题，利用梯度优化的方法极大的加快了搜索效率。本文主要介绍DARTS方法以及两种改进的DARTS方法。</p>
-<h2 id="二、DARTS"><a href="#二、DARTS" class="headerlink" title="二、DARTS"></a>二、DARTS</h2><h2 id="搜索空间"><a href="#搜索空间" class="headerlink" title="搜索空间"></a>搜索空间</h2><p>darts如何对一个cell进行搜索的呢，我们通过下图figure 1了解darts的基本思想：<br>(a)  这些灰色的小方块都是一个cell内的nodes，我们需要通过一些操作（如池化、卷积）把这些nodes连起来<br>(b)  原本一个个操作都是离散的，我们为了实现可微分的搜索，也就是为了使搜索空间连续，我们将特定操作的确定的选择放宽到所有可能操作上的softmax，也就是我们给两个block之间的全部操作都赋予权重。假设我们有三个操作，我们把每个节点都通过上述方法和它所有的前驱节点相连，就得到了下图(b)<br>(c)  然后我们就通过梯度下降对权重进行优化，最后对每个节点取argmax也就是哪个操作的α值最大，就选这个操作。<br>(d) 选了最大的α后的操作后，我们就得到了(d)的路径</p>
-
+        <p>PyTorch学习率调整策略通过torch.optim.lr_scheduler接口实现。</p>
+<p>PyTorch提供的学习率调整策略分为三大类，分别是</p>
+<ul>
+<li>有序调整：等间隔调整(Step)，按需调整学习率(MultiStep)，指数衰减调整(Exponential)和 余弦退火CosineAnnealing。</li>
+<li>自适应调整：自适应调整学习率 ReduceLROnPlateau。</li>
+<li>自定义调整：自定义调整学习率 LambdaLR。</li>
+</ul>
+<h2 id="有序调整"><a href="#有序调整" class="headerlink" title="有序调整"></a>有序调整</h2><h4 id="1-等间隔调整学习率-StepLR"><a href="#1-等间隔调整学习率-StepLR" class="headerlink" title="1 等间隔调整学习率 StepLR"></a>1 等间隔调整学习率 StepLR</h4><p>等间隔调整学习率，调整倍数为 gamma 倍，调整间隔为 step_size。间隔单位是step。需要注意的是， step 通常是指 epoch，不要弄成 iteration 了。</p>
+<pre><code>torch.optim.lr_scheduler.StepLR(optimizer, step_size, gamma=0.1, last_epoch=-1) </code></pre><p>参数：</p>
+<p>step_size(int)- 学习率下降间隔数，若为 30，则会在 30、 60、 90…个 step 时，将学习率调整为 lr*gamma。</p>
+<p>gamma(float)- 学习率调整倍数，默认为 0.1 倍，即下降 10 倍。<br>last_epoch(int)- 上一个 epoch 数，这个变量用来指示学习率是否需要调整。当last_epoch 符合设定的间隔时，就会对学习率进行调整。当为-1 时，学习率设置为初始值。</p>
+<h4 id="2-按需调整学习率MultiStepLR"><a href="#2-按需调整学习率MultiStepLR" class="headerlink" title="2 按需调整学习率MultiStepLR"></a>2 按需调整学习率MultiStepLR</h4><p>按设定的间隔调整学习率。这个方法适合后期调试使用，观察 loss 曲线，为每个实验定制学习率调整时机。</p>
+<pre><code>torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones, gamma=0.1, last_epoch=-1)</code></pre><p>参数：</p>
+<p>milestones(list)- 一个 list，每一个元素代表何时调整学习率， list 元素必须是递增的。如 milestones=[30,80,120]</p>
+<p>gamma(float)- 学习率调整倍数，默认为 0.1 倍，即下降 10 倍。</p>
+<h4 id="3-指数衰减调整学习率-ExponentialLR"><a href="#3-指数衰减调整学习率-ExponentialLR" class="headerlink" title="3 指数衰减调整学习率 ExponentialLR"></a>3 指数衰减调整学习率 ExponentialLR</h4><p>按指数衰减调整学习率，调整公式: lr=lr∗gamma∗∗epoch lr = lr * gamma**epochlr=lr∗gamma∗∗epoch</p>
+<pre><code>torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma, last_epoch=-1)</code></pre><p>参数：</p>
+<p>gamma- 学习率调整倍数的底，指数为 epoch，即 gamma**epoch</p>
+<h4 id="4-余弦退火调整学习率-CosineAnnealingLR"><a href="#4-余弦退火调整学习率-CosineAnnealingLR" class="headerlink" title="4 余弦退火调整学习率 CosineAnnealingLR"></a>4 余弦退火调整学习率 CosineAnnealingLR</h4><p>以余弦函数为周期，并在每个周期最大值时重新设置学习率。以初始学习率为最大学习率，以 2∗Tmax 2*Tmax2∗Tmax 为周期，在一个周期内先下降，后上升。</p>
+<pre><code>torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max, eta_min=0, last_epoch=-1)</code></pre><p>参数：</p>
+<p>T_max(int)- 一次学习率周期的迭代次数，即 T_max 个 epoch 之后重新设置学习率。<br>eta_min(float)- 最小学习率，即在一个周期中，学习率最小会下降到 eta_min，默认值为 0。</p>
+<h2 id="自适应调整学习率-ReduceLROnPlateau"><a href="#自适应调整学习率-ReduceLROnPlateau" class="headerlink" title="自适应调整学习率 ReduceLROnPlateau"></a>自适应调整学习率 ReduceLROnPlateau</h2><p>当某指标不再变化（下降或升高），调整学习率，这是非常实用的学习率调整策略。<br>例如，当验证集的 loss 不再下降时，进行学习率调整；或者监测验证集的 accuracy，当accuracy 不再上升时，则调整学习率。</p>
+<pre><code>torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=&apos;min&apos;, factor=0.1, patience=10,    
+verbose=False, threshold=0.0001, threshold_mode=&apos;rel&apos;, cooldown=0, min_lr=0, eps=1e-08)</code></pre><p>参数：</p>
+<p>mode(str)- 模式选择，有 min 和 max 两种模式， min 表示当指标不再降低(如监测loss)， max 表示当指标不再升高(如监测 accuracy)。</p>
+<p>factor(float)- 学习率调整倍数(等同于其它方法的 gamma)，即学习率更新为 lr = lr * factor</p>
+<p>patience(int)- 忍受该指标多少个 step 不变化，当忍无可忍时，调整学习率。</p>
+<p>verbose(bool)- 是否打印学习率信息，</p>
+<pre><code>print(‘Epoch {:5d}: reducing learning rate of group {} to {:.4e}.’.format(epoch, i, new_lr))
+threshold_mode(str)- 选择判断指标是否达最优的模式，有两种模式， rel 和 abs。</code></pre><p>当 threshold_mode == rel，并且 mode == max 时， dynamic_threshold = best * ( 1 +threshold )；</p>
+<p>当 threshold_mode == rel，并且 mode == min 时， dynamic_threshold = best * ( 1 -threshold )；</p>
+<p>当 threshold_mode == abs，并且 mode== max 时， dynamic_threshold = best + threshold ；</p>
+<p>当 threshold_mode == rel，并且 mode == max 时， dynamic_threshold = best - threshold；</p>
+<p>threshold(float)- 配合 threshold_mode 使用。</p>
+<p>cooldown(int)- “冷却时间“，当调整学习率之后，让学习率调整策略冷静一下，让模型再训练一段时间，再重启监测模式。</p>
+<p>min_lr(float or list)- 学习率下限，可为 float，或者 list，当有多个参数组时，可用 list 进行设置。</p>
+<p>eps(float)- 学习率衰减的最小值，当学习率变化小于 eps 时，则不调整学习率。</p>
+<h2 id="自定义调整学习率-LambdaLR"><a href="#自定义调整学习率-LambdaLR" class="headerlink" title="自定义调整学习率 LambdaLR"></a>自定义调整学习率 LambdaLR</h2><p>为不同参数组设定不同学习率调整策略。调整规则为，</p>
+<pre><code>lr=base_lr∗lmbda(self.last_epoch) lr = base\_lr *lmbda(self.last\_epoch)
+lr=base_lr∗lmbda(self.last_epoch)
+fine-tune 中十分有用，我们不仅可为不同的层设定不同的学习率，还可以为其设定不同的学习率调整策略。</code></pre><p>​    </p>
+<pre><code>torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda, last_epoch=-1)</code></pre>
       
     </div>
     
@@ -366,6 +406,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/code/" rel="tag"># code</a>
+          
+        </div>
+      
 
       
       
@@ -375,8 +421,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/04/Pytorch%20Tensor%E5%9F%BA%E6%9C%AC%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97/" rel="next" title="Pytorch Tensor基本数学运算">
-                <i class="fa fa-chevron-left"></i> Pytorch Tensor基本数学运算
+              <a href="/2019/12/04/nas/" rel="next" title="nas">
+                <i class="fa fa-chevron-left"></i> nas
               </a>
             
           </div>
@@ -384,6 +430,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/04/pytorch%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B/" rel="prev" title="pytorch保存和加载模型">
+                pytorch保存和加载模型 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -519,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、背景"><span class="nav-number">1.</span> <span class="nav-text">一、背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二、DARTS"><span class="nav-number">1.1.</span> <span class="nav-text">二、DARTS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索空间"><span class="nav-number">1.2.</span> <span class="nav-text">搜索空间</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#有序调整"><span class="nav-number">1.</span> <span class="nav-text">有序调整</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-等间隔调整学习率-StepLR"><span class="nav-number">1.0.1.</span> <span class="nav-text">1 等间隔调整学习率 StepLR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-按需调整学习率MultiStepLR"><span class="nav-number">1.0.2.</span> <span class="nav-text">2 按需调整学习率MultiStepLR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-指数衰减调整学习率-ExponentialLR"><span class="nav-number">1.0.3.</span> <span class="nav-text">3 指数衰减调整学习率 ExponentialLR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-余弦退火调整学习率-CosineAnnealingLR"><span class="nav-number">1.0.4.</span> <span class="nav-text">4 余弦退火调整学习率 CosineAnnealingLR</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自适应调整学习率-ReduceLROnPlateau"><span class="nav-number">2.</span> <span class="nav-text">自适应调整学习率 ReduceLROnPlateau</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义调整学习率-LambdaLR"><span class="nav-number">3.</span> <span class="nav-text">自定义调整学习率 LambdaLR</span></a></li></ol></div>
             
 
           </div>
