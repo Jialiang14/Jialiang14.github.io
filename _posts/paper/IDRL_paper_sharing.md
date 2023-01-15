@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 病理学研究进展
+title: IDRL论文阅读
 category: 文献阅读
 tags: Paper reading
 keywords: 文献阅读,2020
