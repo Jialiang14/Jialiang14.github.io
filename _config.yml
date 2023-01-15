@@ -1,12 +1,12 @@
 # Site settings
-title: freeneuro的博客
+title: AndrewSun的博客
 email: soft.wdh.craftman@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  freeneuro的博客
+  AndrewSun的博客
 baseurl: "" # the subpath of your site, e.g. /blog/
 #url: http://yansu.org # the base hostname & protocol for your site
 rss_url: /pages/feed.xml
-author: freeneuro
+author: AndrewSun
 
 # Sidebar filter
 # Choose 'tag' or 'category' as filter in sidebar.
@@ -15,7 +15,7 @@ recent_num: 20
 
 # Social account
 twitter: breezingguy
-weibo: freeneuro
+weibo: AndrewSun
 github: winterwindwang
 instagram: freeneuro041236
 #linkedin: suyan404
