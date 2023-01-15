@@ -8,7 +8,7 @@ description: 论文
 ---
 
 
-## 病理学研究进展
+## 阅读论文列表
 ## Deep neural network models for computational histopathology: A survey  
 
 
